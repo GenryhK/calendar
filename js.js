@@ -70,7 +70,12 @@
 	}
 
 
-	table.setAttribute(`onselectstart`, `return false`)
+	table.setAttribute(`onselectstart`, `return false`);
+
+	function mouseover(event){if(event.target.tagName==`TD`){event.target.style.backgroundColor=`red`}};
+	function mouseout(event){if(event.target.tagName==`TD`){event.target.style.backgroundColor=``}};
+	table.addEventListener(`mouseover`,mouseover);
+	table.addEventListener(`mouseout`,mouseout)
 
 
 
@@ -78,7 +83,7 @@
 
 		let date = new Date(yaer, month, 0);
 		return date.getDate();
-	}
+	};
 
 
 
@@ -105,22 +110,24 @@ inputYear.setAttribute(`placeholder`, `enter the year`)
 inputMonth.setAttribute(`placeholder`, `enter number of the monthr`)
 
 
-
+let form = document.createElement(`form`);
+form.setAttribute(`onsubmit`, `return false`);
 inputYear.appendChild(placeholderYear);
 
 inputMonth.appendChild(placeholderMonth);
 button.addEventListener(`click`, click);
-document.body.appendChild(inputYear);
-document.body.appendChild(inputMonth);
-document.body.appendChild(button);
+form.appendChild(inputYear);
+form.appendChild(inputMonth);
+form.appendChild(button);
+document.body.appendChild(form)
 
 button.textContent = `ok`;
 
 function click() {
 	let g = new Calendar(inputYear.value, inputMonth.value);
 
-	document.body.removeChild(inputYear);
-	document.body.removeChild(inputMonth);
-	document.body.removeChild(button);
+	form.removeChild(inputYear);
+	form.removeChild(inputMonth);
+	form.removeChild(button);
 
 };
