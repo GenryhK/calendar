@@ -107,7 +107,7 @@ let inputMonth = document.createElement(`input`);
 
 let button = document.createElement(`button`);
 inputYear.setAttribute(`placeholder`, `enter the year`)
-inputMonth.setAttribute(`placeholder`, `enter number of the monthr`)
+inputMonth.setAttribute(`placeholder`, `enter number of the month in format -  number without zero`)
 
 
 let form = document.createElement(`form`);
@@ -115,6 +115,8 @@ form.setAttribute(`onsubmit`, `return false`);
 inputYear.appendChild(placeholderYear);
 
 inputMonth.appendChild(placeholderMonth);
+inputYear.style.width=400+`px`
+inputMonth.style.width=400+`px`;
 button.addEventListener(`click`, click);
 form.appendChild(inputYear);
 form.appendChild(inputMonth);
